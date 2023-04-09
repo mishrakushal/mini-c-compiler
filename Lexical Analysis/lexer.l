@@ -113,7 +113,7 @@ alpha [a-zA-Z]
 digit [0-9]
 underline [_]
 space [ ]
-tab [   ]
+tab [	]
 newline [\n]
 char \'.\'
 at [@]
@@ -125,7 +125,7 @@ string \"(.^([%d]|[%f]|[%s]|[%c]))\"
 {tab}*      {}
 {string}    {return STRING_CONST;}
 {char}      {return CHAR_CONST;}
-{line}      {line_number++;}
+{newline}      {line_number++;}
 auto        {return AUTO;}
 break       {return BREAK;}
 
