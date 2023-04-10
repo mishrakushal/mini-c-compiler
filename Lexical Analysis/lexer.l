@@ -217,10 +217,72 @@ scanf       {return SCANF;}
 
 {alpha}({alpha}|{digit}|_)*\((({alpha}|{digit}|{underline}|{space})*((\,)({alpha}|{digit}|{underline}|{space})*)*)\)        {return FUNC;}
 
-
+({digit}+)\.({digit}+)\.({digit}|\.)*       {return NUM_ERR;}
 
 
 %%
+
+struct node {
+    char token[100];
+    char attr[100];
+    struct node *next;
+};
+
+struct hash {
+    struct node *head;
+    int count;
+};
+
+struct hash hashTable[1000];
+int elementCount = 1000;
+
+struct node *createNode(char *token, char *attr) {
+    struct node *newNode;
+    newNode = (struct node *)malloc(sizeof(struct node));
+    strcpy(newNode->token, token);
+    strcpy(newNode->attr, attr);
+    newNode->next = NULL;
+    return newNode;
+}
+
+int hashIndex(char *token) {
+	int hi = 0;
+	for (int i = 0; token[i] != '\0'; ++i) {
+		hi += (int)token[i];
+	}
+	hi %= elementCount;
+	return hi;
+}
+
+void insertToHash(char *token, char *attr) {
+	int flag = 0;
+	int hi;
+	hi = hashIndex(token);
+	struct node *newnode = createNode(token, attr);
+	/* head of list for the bucket with index "hashIndex" */
+	if (!hashTable[hi].head) {
+		hashTable[hi].head = newnode;
+        hashTable[hi].count = 1;
+        return;
+	}
+	struct node *myNode;
+    myNode = hashTable[hi].head;
+	while (myNode != NULL) {
+        if (strcmp(myNode->token, token) == 0) {
+            flag = 1;
+            break;
+        }
+        myNode = myNode->next;
+    }
+	if(!flag) {
+		//adding new node to the list
+		newnode->next = (hashTable[hi].head);
+		//update the head of the list and no of nodes in the current bucket
+		hashTable[hi].head = newnode;
+		hashTable[hi].count++;
+	}
+	return;
+}
 
 int yywrap() {
     return 1;
