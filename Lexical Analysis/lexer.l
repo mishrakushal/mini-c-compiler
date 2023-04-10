@@ -162,6 +162,62 @@ while       {return WHILE;}
 printf      {return PRINTF;}
 scanf       {return SCANF;}
 
+{alpha}({alpha}|{digit}|{underline})*   {return IDENTIFIER;}
+
+[+-]{digit}+(\.{digit}+)?               {return SIGNED_CONST;}
+
+"//"        {return SLC;}
+"/*"        {return MLCS;}
+"*/"        {return MLCE;}
+
+"<="        {return LEQ;}
+">="        {return GEQ;}
+"=="        {return EQEQ;}
+"!="        {return NEQ;}
+
+"||"        {return LOR;}
+"&&"        {return LAND;}
+"="         {return ASSIGN;}
+
+"+"         {return PLUS;}
+"-"         {return SUB;}
+"*"         {return MULT;}
+"/"         {return DIV;}
+"%"         {return MOD;}
+
+"<"         {return LESSER;}
+">"         {return GREATER;}
+
+"++"        {return INCR;}
+"--"        {return DECR;}
+
+";"         {return SEMI;}
+","         {return COMMA;}
+
+"#include<stdio.h>"         {return HEADER;}
+"#include <stdio.h>"        {return HEADER;}
+"#include<stdlib.h>"        {return HEADER;}
+"#include <stdlib.h>"       {return HEADER;}
+
+"main()"        {return MAIN;}
+"main ()"       {return MAIN;}
+
+{digit}+                    {return INT_CONST;}
+({digit}+)\.({digit}+)      {return FLOAT_CONST;}
+
+"%d"|"%f"|"%u"|"%s"         {return TYPE_SPEC;}
+"\""            {return DQ;}
+"("             {return OBO;}
+")"             {return OBC;}
+"{"             {return CBO;}
+"}"             {return CBC;}
+"#"             {return HASH;}
+
+{alpha}({alpha}|{digit}|{underline})*\[{digit}*\]       {return ARR;}
+
+{alpha}({alpha}|{digit}|_)*\((({alpha}|{digit}|{underline}|{space})*((\,)({alpha}|{digit}|{underline}|{space})*)*)\)        {return FUNC;}
+
+
 
 
 %%
