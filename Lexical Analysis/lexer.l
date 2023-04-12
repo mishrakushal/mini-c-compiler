@@ -284,12 +284,41 @@ void insertToHash(char *token, char *attr) {
 	return;
 }
 
+void display ()  {
+    struct node *myNode;
+    int k = 1;
+    printf("-------------------------------------------------------------------");
+    printf("\nSNo \t|\tToken \t\t|\tToken Type \t\n");
+    printf("-------------------------------------------------------------------\n");
+    for (int i = 0; i < elementCount; ++i) {
+        if (hashTable[i].count == 0) {
+            continue;
+        }
+        myNode = hashTable[i].head;
+        if (!myNode) {
+            continue;
+        }
+        while (myNode) {
+            if(strcmp(myNode->attr, "SPECIAL SYMBOL") == 0) {
+                printf("%d\t\t", k++);
+                printf("T_%s\t\t\t", myNode->token);
+                printf("%d\t\n", *myNode->token);
+            } else {
+                printf("%d\t\t", k++);
+                printf("T_%s\t\t\t", myNode->token);
+                printf("%s\t\n", myNode->attr);
+            }
+            myNode = myNode->next;
+        }
+    }
+   	return;
+}
+
 int yywrap() {
     return 1;
 }
 
-int main(void)
-{
+int main(void) {
     yylex();
     return 0;
 }
