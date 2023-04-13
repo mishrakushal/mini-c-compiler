@@ -1,0 +1,155 @@
+
+
+#include<stdio.h>	HEADER				Line 1
+int			KEYWORD				Line 2
+main()			MAIN FUNCTION			Line 2
+{			SPECIAL SYMBOL			Line 3
+int			KEYWORD				Line 4
+a			IDENTIFIER			Line 4
+,			SPECIAL SYMBOL			Line 4
+i			IDENTIFIER			Line 4
+,			SPECIAL SYMBOL			Line 4
+j			IDENTIFIER			Line 4
+,			SPECIAL SYMBOL			Line 4
+flag			IDENTIFIER			Line 4
+=			OPERATOR			Line 4
+0			INTEGER CONSTANT		Line 4
+;			SPECIAL SYMBOL			Line 4
+printf			PRE-DEFINED FUNCTION		Line 5
+(			SPECIAL SYMBOL			Line 5
+"			SPECIAL SYMBOL			Line 5
+Input			IDENTIFIER			Line 5
+no			IDENTIFIER			Line 5
+"			SPECIAL SYMBOL			Line 5
+)			SPECIAL SYMBOL			Line 5
+;			SPECIAL SYMBOL			Line 5
+//			Single-line Comment		Line 5
+scanf			PRE-DEFINED FUNCTION		Line 6
+(			SPECIAL SYMBOL			Line 6
+"			SPECIAL SYMBOL			Line 6
+%d			TYPE SPECIFIER			Line 6
+"			SPECIAL SYMBOL			Line 6
+,			SPECIAL SYMBOL			Line 6
+&a			IDENTIFIER			Line 6
+)			SPECIAL SYMBOL			Line 6
+;			SPECIAL SYMBOL			Line 6
+i			IDENTIFIER			Line 7
+=			OPERATOR			Line 7
+3.1415			FLOATING POINT CONSTANT		Line 7
+E			IDENTIFIER			Line 7
++3			SIGNED CONSTANT			Line 7
+;			SPECIAL SYMBOL			Line 7
+j			IDENTIFIER			Line 8
+=			OPERATOR			Line 8
+127			INTEGER CONSTANT		Line 8
+;			SPECIAL SYMBOL			Line 8
+float			KEYWORD				Line 9
+
+******** ERROR!! UNKNOWN TOKEN T_3b at line 9 ********
+
+=			OPERATOR			Line 9
+9.5			FLOATING POINT CONSTANT		Line 9
+;			SPECIAL SYMBOL			Line 9
+while			KEYWORD				Line 10
+(			SPECIAL SYMBOL			Line 10
+i			IDENTIFIER			Line 10
+<=			OPERATOR			Line 10
+a			IDENTIFIER			Line 10
+/			OPERATOR			Line 10
+2			INTEGER CONSTANT		Line 10
+)			SPECIAL SYMBOL			Line 10
+{			SPECIAL SYMBOL			Line 11
+if			KEYWORD				Line 12
+(			SPECIAL SYMBOL			Line 12
+a			IDENTIFIER			Line 12
+%			OPERATOR			Line 12
+i			IDENTIFIER			Line 12
+==			OPERATOR			Line 12
+0			INTEGER CONSTANT		Line 12
+)			SPECIAL SYMBOL			Line 12
+{			SPECIAL SYMBOL			Line 13
+flag			IDENTIFIER			Line 14
+=			OPERATOR			Line 14
+1			INTEGER CONSTANT		Line 14
+;			SPECIAL SYMBOL			Line 14
+break			KEYWORD				Line 15
+;			SPECIAL SYMBOL			Line 15
+}			SPECIAL SYMBOL			Line 16
+i			IDENTIFIER			Line 17
+++			OPERATOR			Line 17
+;			SPECIAL SYMBOL			Line 17
+}			SPECIAL SYMBOL			Line 18
+if			KEYWORD				Line 19
+(			SPECIAL SYMBOL			Line 19
+flag			IDENTIFIER			Line 19
+==			OPERATOR			Line 19
+0			INTEGER CONSTANT		Line 19
+)			SPECIAL SYMBOL			Line 19
+printf			PRE-DEFINED FUNCTION		Line 20
+(			SPECIAL SYMBOL			Line 20
+"			SPECIAL SYMBOL			Line 20
+Prime			IDENTIFIER			Line 20
+"			SPECIAL SYMBOL			Line 20
+)			SPECIAL SYMBOL			Line 20
+;			SPECIAL SYMBOL			Line 20
+//			Single-line Comment		Line 20
+'.else			KEYWORD				Line 21
+printf			PRE-DEFINED FUNCTION		Line 22
+(			SPECIAL SYMBOL			Line 22
+"			SPECIAL SYMBOL			Line 22
+Not			IDENTIFIER			Line 22
+Prime			IDENTIFIER			Line 22
+"			SPECIAL SYMBOL			Line 22
+)			SPECIAL SYMBOL			Line 22
+;			SPECIAL SYMBOL			Line 22
+return			KEYWORD				Line 23
+0			INTEGER CONSTANT		Line 23
+;			SPECIAL SYMBOL			Line 23
+}			SPECIAL SYMBOL			Line 24
+
+
+	******** SYMBOL TABLE ********		
+-------------------------------------------------------------------
+SNo 	|	Token 		|	Token Type 	
+-------------------------------------------------------------------
+1		T_"			34	
+2		T_%			OPERATOR	
+3		T_(			40	
+4		T_)			41	
+5		T_,			44	
+6		T_/			OPERATOR	
+7		T_0			INTEGER CONSTANT	
+8		T_1			INTEGER CONSTANT	
+9		T_2			INTEGER CONSTANT	
+10		T_;			59	
+11		T_=			OPERATOR	
+12		T_E			IDENTIFIER	
+13		T_++			OPERATOR	
+14		T_+3			SIGNED CONSTANT	
+15		T_a			IDENTIFIER	
+16		T_i			IDENTIFIER	
+17		T_j			IDENTIFIER	
+18		T_<=			OPERATOR	
+19		T_==			OPERATOR	
+20		T_{			123	
+21		T_}			125	
+22		T_127			INTEGER CONSTANT	
+23		T_9.5			DOUBLE	
+24		T_if			KEYWORD	
+25		T_no			IDENTIFIER	
+26		T_3.1415			DOUBLE	
+27		T_Not			IDENTIFIER	
+28		T_int			KEYWORD	
+29		T_flag			IDENTIFIER	
+30		T_else			KEYWORD	
+31		T_main()			IDENTIFIER	
+32		T_Prime			IDENTIFIER	
+33		T_break			KEYWORD	
+34		T_scanf			PRE DEFINED FUNCTION	
+35		T_Input			IDENTIFIER	
+36		T_float			KEYWORD	
+37		T_while			KEYWORD	
+38		T_printf			PRE DEFINED FUNCTION	
+39		T_return			KEYWORD	
+-------------------------------------------------------------------
+

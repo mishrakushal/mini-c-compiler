@@ -316,6 +316,7 @@ int main(int argc, char *argv[]) {
     */
     int scan, slcline = 0, mlc = 0, mlcline = 0, dq = 0, dqline = 0;
     yyin = fopen("isPrime.c","r"); //add test case files here
+    freopen("output.txt","w",stdout);
     printf("\n\n");
     scan = yylex();
     while(scan) {
