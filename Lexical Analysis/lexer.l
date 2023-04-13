@@ -1,86 +1,72 @@
 %{
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
-    #include <ctype.h>
-    #include <math.h>
+    int lineno = 1;
+    #include<stdio.h>
+    #include<stdlib.h>
+    #include<string.h>
 
-    /*
-        Lexical Analysis [5 marks]- For this phase, write a LEX program that broked down the input program into 
-        tokens (identifiers, operators, numbers, keywords, punctuators). A symbol table is created with the list of 
-        tokens obtained from the input. Also, report if any printf and scanf statements are in the given program.
-    */
-
-    /*
-        1. Type: int, float, char 
-        2. Basic statements: expression statement, assignment statements, and compound statements, declaration statement. 
-        3. Control and looping statements: if statement, for statement, while statement, and switch statement. (note that nesting of these statements is also possible.) 
-        4. System functions: printf and scanf statements. 
-        5. Other: Variables, arrays, and function
-    */
     #define AUTO 1
     #define BREAK 2
-    #define CHAR 3
-    #define CASE 4
-    #define CONTINUE 5
-    #define CONST 6
-    #define DOUBLE 7
+    #define CASE 3
+    #define CHAR 4
+    #define CONST 5
+    #define CONTINUE 6
+    #define DEFAULT 7
     #define DO 8
-    #define DEFAULT 9
-    #define EXTERN 10
-    #define ELSE 11
-    #define ENUM 12
-    #define FOR 13
-    #define FLOAT 14
+    #define DOUBLE 9
+    #define ELSE 10
+    #define ENUM 11
+    #define EXTERN 12
+    #define FLOAT 13
+    #define FOR 14
     #define GOTO 15
-    #define INT 16
-    #define IF 17
+    #define IF 16
+    #define INT 17
     #define LONG 18
-    #define RETURN 19
-    #define REGISTER 20
-    #define SWITCH 21
-    #define STATIC 22
-    #define SIGNED 23
-    #define SIZEOF 24
-    #define SHORT 25
-    #define STRUCT 26
+    #define REGISTER 19
+    #define RETURN 20
+    #define SHORT 21
+    #define SIGNED 22
+    #define SIZEOF 23
+    #define STATIC 24
+    #define STRUCT 25
+    #define SWITCH 26
     #define TYPEDEF 27
-    #define UNSIGNED 28
-    #define UNION 29
-    #define VOLATILE 30
-    #define VOID 31
+    #define UNION 28
+    #define UNSIGNED 29
+    #define VOID 30
+    #define VOLATILE 31
     #define WHILE 32
 
     #define IDENTIFIER 33
     #define SLC 34
-    #define MLCE 35
-    #define MLCS 36
+    #define MLCS 35
+    #define MLCE 36
 
-    #define GEQ 37
-    #define LEQ 38
-    #define NEQ 39
-    #define EQEQ 40
-    #define LAND 41
-    #define LOR 42
-    #define PLUS 43
-    #define ASSIGN 44
-    #define MULT 45
-    #define SUB 46
-    #define MOD 47
-    #define DIV 48
-    #define GREATER 49
-    #define LESSER 50
-    #define DECR 51
-    #define INCR 52
+    #define LEQ 37
+    #define GEQ 38
+    #define EQEQ 39
+    #define NEQ 40
+    #define LOR 41
+    #define LAND 42
+    #define ASSIGN 43
+    #define PLUS 44
+    #define SUB 45
+    #define MULT 46
+    #define DIV 47
+    #define MOD 48
+    #define LESSER 49
+    #define GREATER 50
+    #define INCR 51
+    #define DECR 52
 
-    #define SEMI 53
-    #define COMMA 54
+    #define COMMA 53
+    #define SEMI 54
 
-    #define MAIN 55
-    #define HEADER 56
+    #define HEADER 55
+    #define MAIN 56
 
-    #define SCANF 57
-    #define PRINTF 58
+    #define PRINTF 57
+    #define SCANF 58
     #define DEFINE 59
 
     #define INT_CONST 60
@@ -90,23 +76,21 @@
 
     #define DQ 63
 
-    #define OBC 64
-    #define OBO 65
-    #define CBC 66
-    #define CBO 67
+    #define OBO 64
+    #define OBC 65
+    #define CBO 66
+    #define CBC 67
     #define HASH 68
 
-    #define FUNC 69
-    #define ARR 70
+    #define ARR 69
+    #define FUNC 70
 
-    #define UNKNOWN 71
-    #define NUM_ERR 72
+    #define NUM_ERR 71
+    #define UNKNOWN 72
 
-    #define STRING_CONST 73
-    #define CHAR_CONST 74
-    #define SIGNED_CONST 75
-
-    int line_number = 1;
+    #define CHAR_CONST 73
+    #define SIGNED_CONST 74
+    #define STRING_CONST 75
 %}
 
 alpha [a-zA-Z]
@@ -121,50 +105,50 @@ string \"(.^([%d]|[%f]|[%s]|[%c]))\"
 
 %%
 
-{space}*    {}
-{tab}*      {}
-{string}    {return STRING_CONST;}
-{char}      {return CHAR_CONST;}
-{newline}   {line_number++;}
-auto        {return AUTO;}
-break       {return BREAK;}
-case        {return CASE;}
-char        {return CHAR;}
-const       {return CONST;}
-continue    {return CONTINUE;}
-default     {return DEFAULT;}
-do          {return DO;}
-double      {return DOUBLE;}
-else        {return ELSE;}
-enum        {return ENUM;}
-extern      {return EXTERN;}
-float       {return FLOAT;}
-for         {return FOR;}
-goto        {return GOTO;}
-if          {return IF;}
-int         {return INT;}
-long        {return LONG;}
-register    {return REGISTER;}
-return      {return RETURN;}
-short       {return SHORT;}
-signed      {return SIGNED;}
-sizeof      {return SIZEOF;}
-static      {return STATIC;}
-struct      {return STRUCT;}
-switch      {return SWITCH;}
-typedef     {return TYPEDEF;}
-union       {return UNION;}
-unsigned    {return UNSIGNED;}
-void        {return VOID;}
-volatile    {return VOLATILE;}
-while       {return WHILE;}
+{space}* {}
+{tab}* {}
+{string}        {return STRING_CONST;}
+{char}          {return CHAR_CONST;}
+{newline}       {lineno++;}
+auto            {return AUTO;}
+break           {return BREAK;}
+case            {return CASE;}
+char            {return CHAR;}
+const           {return CONST;}
+continue        {return CONTINUE;}
+default         {return DEFAULT;}
+do              {return DO;}
+double          {return DOUBLE;}
+else            {return ELSE;}
+enum            {return ENUM;}
+extern          {return EXTERN;}
+float           {return FLOAT;}
+for             {return FOR;}
+goto            {return GOTO;}
+if              {return IF;}
+int             {return INT;}
+long            {return LONG;}
+register        {return REGISTER;}
+return          {return RETURN;}
+short           {return SHORT;}
+signed          {return SIGNED;}
+sizeof          {return SIZEOF;}
+static          {return STATIC;}
+struct          {return STRUCT;}
+switch          {return SWITCH;}
+typedef         {return TYPEDEF;}
+union           {return UNION;}
+unsigned        {return UNSIGNED;}
+void            {return VOID;}
+volatile        {return VOLATILE;}
+while           {return WHILE;}
 
-printf      {return PRINTF;}
-scanf       {return SCANF;}
+printf          {return PRINTF;}
+scanf           {return SCANF;}
 
 {alpha}({alpha}|{digit}|{underline})*   {return IDENTIFIER;}
 
-[+-]{digit}+(\.{digit}+)?               {return SIGNED_CONST;}
+[+-][0-9]{digit}*(\.{digit}+)?          {return SIGNED_CONST;}
 
 "//"        {return SLC;}
 "/*"        {return MLCS;}
@@ -174,30 +158,30 @@ scanf       {return SCANF;}
 ">="        {return GEQ;}
 "=="        {return EQEQ;}
 "!="        {return NEQ;}
-
 "||"        {return LOR;}
 "&&"        {return LAND;}
 "="         {return ASSIGN;}
-
 "+"         {return PLUS;}
 "-"         {return SUB;}
 "*"         {return MULT;}
 "/"         {return DIV;}
 "%"         {return MOD;}
-
 "<"         {return LESSER;}
 ">"         {return GREATER;}
-
 "++"        {return INCR;}
 "--"        {return DECR;}
 
-";"         {return SEMI;}
 ","         {return COMMA;}
+";"         {return SEMI;}
 
-"#include<stdio.h>"         {return HEADER;}
-"#include <stdio.h>"        {return HEADER;}
-"#include<stdlib.h>"        {return HEADER;}
-"#include <stdlib.h>"       {return HEADER;}
+"#include<stdio.h>"     {return HEADER;}
+"#include <stdio.h>"    {return HEADER;}
+"#include<stdlib.h>"    {return HEADER;}
+"#include <stdlib.h>"   {return HEADER;}
+"#include<string.h>"    {return HEADER;}
+"#include <string.h>"   {return HEADER;}
+"#include<math.h>"      {return HEADER;}
+"#include <math.h>"     {return HEADER;}
 
 "main()"        {return MAIN;}
 "main ()"       {return MAIN;}
@@ -219,6 +203,7 @@ scanf       {return SCANF;}
 
 ({digit}+)\.({digit}+)\.({digit}|\.)*       {return NUM_ERR;}
 
+({digit}|{at})+({alpha}|{digit}|{underline}|{at})* return UNKNOWN;
 
 %%
 
@@ -274,6 +259,7 @@ void insertToHash(char *token, char *attr) {
         }
         myNode = myNode->next;
     }
+
 	if(!flag) {
 		//adding new node to the list
 		newnode->next = (hashTable[hi].head);
@@ -284,7 +270,7 @@ void insertToHash(char *token, char *attr) {
 	return;
 }
 
-void display ()  {
+void display() {
     struct node *myNode;
     int k = 1;
     printf("-------------------------------------------------------------------");
@@ -298,6 +284,7 @@ void display ()  {
         if (!myNode) {
             continue;
         }
+
         while (myNode) {
             if(strcmp(myNode->attr, "SPECIAL SYMBOL") == 0) {
                 printf("%d\t\t", k++);
@@ -310,7 +297,7 @@ void display ()  {
             }
             myNode = myNode->next;
         }
-    }
+	}
    	return;
 }
 
@@ -318,7 +305,147 @@ int yywrap() {
     return 1;
 }
 
-int main(void) {
-    yylex();
-    return 0;
+int main(int argc, char *argv[]) {
+    /*
+        Counters:
+        1. single-line comments
+        2. multi-line comments
+        3. multi-line comment line no
+        4. double-quotations
+        5. double-quotations line
+    */
+    int scan, slcline = 0, mlc = 0, mlcline = 0, dq = 0, dqline = 0;
+    yyin = fopen("isPrime.c","r"); //add test case files here
+    printf("\n\n");
+    scan = yylex();
+    while(scan) {
+        if(lineno == slcline) {
+            scan = yylex();
+            continue;
+        }
+
+        if(lineno != dqline && dqline != 0) {
+            if(dq % 2 != 0) {
+                printf("\n******** ERROR!! INCOMPLETE STRING at line %d ********\n\n", dqline);
+            }
+            dq = 0;
+        }
+
+        if((scan >= 1 && scan <= 32) && mlc == 0) {
+            printf("%s\t\t\tKEYWORD\t\t\t\tLine %d\n", yytext, lineno);
+            insertToHash(yytext, "KEYWORD");
+        }
+
+        if(scan == 33 && mlc == 0) {
+            printf("%s\t\t\tIDENTIFIER\t\t\tLine %d\n", yytext, lineno);
+            insertToHash(yytext, "IDENTIFIER");
+        }
+
+        if(scan == 34) {
+            printf("%s\t\t\tSingle-line Comment\t\tLine %d\n", yytext, lineno);
+            slcline = lineno;
+        }
+
+        if(scan == 35 && mlc == 0) {
+            printf("%s\t\t\tMulti-line Comment Start\t\tLine %d\n", yytext, lineno);
+            mlcline = lineno;
+            mlc = 1;
+        }
+
+        if(scan == 36 && mlc == 0) {
+            printf("\n******** ERROR!! UNMATCHED MULTILINE COMMENT END %s at line %d ********\n\n", yytext, lineno);
+        }
+
+        if(scan == 36 && mlc == 1) {
+            mlc = 0;
+            printf("%s\t\t\tMultiline Comment End\t\tLine %d\n", yytext, lineno);
+        }
+
+        if((scan >= 37 && scan <= 52) && mlc == 0) {
+            printf("%s\t\t\tOPERATOR\t\t\tLine %d\n", yytext, lineno);
+            insertToHash(yytext, "OPERATOR");
+        }
+
+        if((scan==53||scan==54||scan==63||(scan>=64 && scan<=68)) && mlc==0) {
+            printf("%s\t\t\tSPECIAL SYMBOL\t\t\tLine %d\n", yytext, lineno);
+            if(scan==63) {
+                dq++;
+                dqline = lineno;
+            }
+            insertToHash(yytext,"SPECIAL SYMBOL");
+        }
+
+        if(scan == 55 && mlc == 0) {
+            printf("%s\tHEADER\t\t\t\tLine %d\n",yytext, lineno);
+        }
+
+        if(scan == 56 && mlc == 0) {
+            printf("%s\t\t\tMAIN FUNCTION\t\t\tLine %d\n", yytext, lineno);
+            insertToHash(yytext, "IDENTIFIER");
+        }
+
+        if((scan == 57 || scan == 58) && mlc == 0) {
+            printf("%s\t\t\tPRE-DEFINED FUNCTION\t\tLine %d\n", yytext, lineno);
+            insertToHash(yytext, "PRE DEFINED FUNCTION");
+        }
+
+        if(scan == 59 && mlc == 0) {
+            printf("%s\t\t\tPRE-PROCESSOR DIRECTIVE\t\tLine %d\n", yytext, lineno);
+        }
+
+        if(scan == 60 && mlc == 0) {
+            printf("%s\t\t\tINTEGER CONSTANT\t\tLine %d\n", yytext, lineno);
+            insertToHash(yytext, "INTEGER CONSTANT");
+        }
+
+        if(scan == 61 && mlc == 0) {
+            printf("%s\t\t\tFLOATING POINT CONSTANT\t\tLine %d\n", yytext, lineno);
+            insertToHash(yytext, "DOUBLE");
+        }
+
+        if(scan == 62 && mlc == 0) {
+            printf("%s\t\t\tTYPE SPECIFIER\t\t\tLine %d\n", yytext, lineno);
+        }
+
+        if(scan == 69 && mlc == 0) {
+            printf("%s\t\t\tARRAY\t\t\t\tLine %d\n", yytext, lineno);
+            insertToHash(yytext, "ARRAY");
+        }
+
+        if(scan == 70 && mlc == 0) {
+            printf("%s\t\t\tUSER DEFINED FUNCTION\t\tLine %d\n", yytext, lineno);
+            insertToHash(yytext, "USER DEFINED FUNCTION");
+        }
+
+        if(scan == 71 && mlc == 0) {
+            printf("\n******** ERROR!! CONSTANT ERROR %s at line %d ********\n\n", yytext, lineno);
+        }
+
+        if(scan == 72 && mlc == 0) {
+            printf("\n******** ERROR!! UNKNOWN TOKEN T_%s at line %d ********\n\n", yytext, lineno);
+        }
+
+        if(scan == 73 && mlc == 0) {
+            printf("%s\t\t\tCHARACTER CONSTANT\t\t\tLine %d\n", yytext, lineno);
+            insertToHash(yytext, "CHARACTER CONSTANT");
+        }
+
+        if(scan == 74 && mlc == 0) {
+            printf("%s\t\t\tSIGNED CONSTANT\t\t\tLine %d\n", yytext, lineno);
+            insertToHash(yytext, "SIGNED CONSTANT");
+        }
+
+        if(scan == 75 && mlc == 0) {
+            printf("%s\t\t\tSTRING CONSTANT\t\t\tLine %d\n", yytext, lineno);
+            insertToHash(yytext, "STRING_CONSTANT");
+        }
+
+        scan = yylex();
+    }
+    if(mlc == 1) {
+        printf("\n******** ERROR!! UNMATCHED COMMENT STARTING at line %d ********\n\n",mlcline);
+    }
+    printf("\n\n\t******** SYMBOL TABLE ********\t\t\n");
+    display();
+    printf("-------------------------------------------------------------------\n\n");
 }
