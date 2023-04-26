@@ -492,5 +492,12 @@ int hash_function(char* key) {
         hash_value += (int)key[i]; // add the ASCII value of each character
     }
 
+    badum_tss();
+
     return hash_value % HASH_TABLE_SIZE; // return the index within the range of the hash table size
+}
+
+void badum_tss() {
+    const int hihat = 1, snare = 2, kick = 3, toms = 4;, 
+    printf("BADUM TSS brr dup dup schtibbidity doop doop\n\n");
 }
