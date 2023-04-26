@@ -699,7 +699,7 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "lexer.l"
 #line 2 "lexer.l"
-    int lineno = 1;
+    int lineno = 1 * 1;
     #include<stdio.h>
     #include<stdlib.h>
     #include<string.h>
@@ -791,8 +791,10 @@ char *yytext;
     #define CHAR_CONST 73
     #define SIGNED_CONST 74
     #define STRING_CONST 75
-#line 795 "lex.yy.c"
-#line 796 "lex.yy.c"
+
+    #define HASH_TABLE_SIZE 1000
+#line 797 "lex.yy.c"
+#line 798 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -1009,10 +1011,10 @@ YY_DECL
 		}
 
 	{
-#line 106 "lexer.l"
+#line 108 "lexer.l"
 
 
-#line 1016 "lex.yy.c"
+#line 1018 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1071,436 +1073,436 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 108 "lexer.l"
+#line 110 "lexer.l"
 {}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 109 "lexer.l"
+#line 111 "lexer.l"
 {}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 110 "lexer.l"
+#line 112 "lexer.l"
 {return STRING_CONST;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 111 "lexer.l"
+#line 113 "lexer.l"
 {return CHAR_CONST;}
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 112 "lexer.l"
+#line 114 "lexer.l"
 {lineno++;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 113 "lexer.l"
+#line 115 "lexer.l"
 {return AUTO;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 114 "lexer.l"
+#line 116 "lexer.l"
 {return BREAK;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 115 "lexer.l"
+#line 117 "lexer.l"
 {return CASE;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 116 "lexer.l"
+#line 118 "lexer.l"
 {return CHAR;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 117 "lexer.l"
+#line 119 "lexer.l"
 {return CONST;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 118 "lexer.l"
+#line 120 "lexer.l"
 {return CONTINUE;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 119 "lexer.l"
+#line 121 "lexer.l"
 {return DEFAULT;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 120 "lexer.l"
+#line 122 "lexer.l"
 {return DO;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 121 "lexer.l"
+#line 123 "lexer.l"
 {return DOUBLE;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 122 "lexer.l"
+#line 124 "lexer.l"
 {return ELSE;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 123 "lexer.l"
+#line 125 "lexer.l"
 {return ENUM;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 124 "lexer.l"
+#line 126 "lexer.l"
 {return EXTERN;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 125 "lexer.l"
+#line 127 "lexer.l"
 {return FLOAT;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 126 "lexer.l"
+#line 128 "lexer.l"
 {return FOR;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 127 "lexer.l"
+#line 129 "lexer.l"
 {return GOTO;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 128 "lexer.l"
+#line 130 "lexer.l"
 {return IF;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 129 "lexer.l"
+#line 131 "lexer.l"
 {return INT;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 130 "lexer.l"
+#line 132 "lexer.l"
 {return LONG;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 131 "lexer.l"
+#line 133 "lexer.l"
 {return REGISTER;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 132 "lexer.l"
+#line 134 "lexer.l"
 {return RETURN;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 133 "lexer.l"
+#line 135 "lexer.l"
 {return SHORT;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 134 "lexer.l"
+#line 136 "lexer.l"
 {return SIGNED;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 135 "lexer.l"
+#line 137 "lexer.l"
 {return SIZEOF;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 136 "lexer.l"
+#line 138 "lexer.l"
 {return STATIC;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 137 "lexer.l"
+#line 139 "lexer.l"
 {return STRUCT;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 138 "lexer.l"
+#line 140 "lexer.l"
 {return SWITCH;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 139 "lexer.l"
+#line 141 "lexer.l"
 {return TYPEDEF;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 140 "lexer.l"
+#line 142 "lexer.l"
 {return UNION;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 141 "lexer.l"
+#line 143 "lexer.l"
 {return UNSIGNED;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 142 "lexer.l"
+#line 144 "lexer.l"
 {return VOID;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 143 "lexer.l"
+#line 145 "lexer.l"
 {return VOLATILE;}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 144 "lexer.l"
+#line 146 "lexer.l"
 {return WHILE;}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 146 "lexer.l"
+#line 148 "lexer.l"
 {return PRINTF;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 147 "lexer.l"
+#line 149 "lexer.l"
 {return SCANF;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 149 "lexer.l"
+#line 151 "lexer.l"
 {return IDENTIFIER;}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 151 "lexer.l"
+#line 153 "lexer.l"
 {return SIGNED_CONST;}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 153 "lexer.l"
+#line 155 "lexer.l"
 {return SLC;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 154 "lexer.l"
+#line 156 "lexer.l"
 {return MLCS;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 155 "lexer.l"
+#line 157 "lexer.l"
 {return MLCE;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 157 "lexer.l"
+#line 159 "lexer.l"
 {return LEQ;}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 158 "lexer.l"
+#line 160 "lexer.l"
 {return GEQ;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 159 "lexer.l"
+#line 161 "lexer.l"
 {return EQEQ;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 160 "lexer.l"
+#line 162 "lexer.l"
 {return NEQ;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 161 "lexer.l"
+#line 163 "lexer.l"
 {return LOR;}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 162 "lexer.l"
+#line 164 "lexer.l"
 {return LAND;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 163 "lexer.l"
+#line 165 "lexer.l"
 {return ASSIGN;}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 164 "lexer.l"
+#line 166 "lexer.l"
 {return PLUS;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 165 "lexer.l"
+#line 167 "lexer.l"
 {return SUB;}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 166 "lexer.l"
+#line 168 "lexer.l"
 {return MULT;}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 167 "lexer.l"
+#line 169 "lexer.l"
 {return DIV;}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 168 "lexer.l"
+#line 170 "lexer.l"
 {return MOD;}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 169 "lexer.l"
+#line 171 "lexer.l"
 {return LESSER;}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 170 "lexer.l"
+#line 172 "lexer.l"
 {return GREATER;}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 171 "lexer.l"
+#line 173 "lexer.l"
 {return INCR;}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 172 "lexer.l"
+#line 174 "lexer.l"
 {return DECR;}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 174 "lexer.l"
+#line 176 "lexer.l"
 {return COMMA;}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 175 "lexer.l"
+#line 177 "lexer.l"
 {return SEMI;}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 177 "lexer.l"
+#line 179 "lexer.l"
 {return HEADER;}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 178 "lexer.l"
+#line 180 "lexer.l"
 {return HEADER;}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 179 "lexer.l"
+#line 181 "lexer.l"
 {return HEADER;}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 180 "lexer.l"
+#line 182 "lexer.l"
 {return HEADER;}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 181 "lexer.l"
+#line 183 "lexer.l"
 {return HEADER;}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 182 "lexer.l"
+#line 184 "lexer.l"
 {return HEADER;}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 183 "lexer.l"
+#line 185 "lexer.l"
 {return HEADER;}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 184 "lexer.l"
+#line 186 "lexer.l"
 {return HEADER;}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 186 "lexer.l"
+#line 188 "lexer.l"
 {return MAIN;}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 187 "lexer.l"
+#line 189 "lexer.l"
 {return MAIN;}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 189 "lexer.l"
+#line 191 "lexer.l"
 {return INT_CONST;}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 190 "lexer.l"
+#line 192 "lexer.l"
 {return FLOAT_CONST;}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 192 "lexer.l"
+#line 194 "lexer.l"
 {return TYPE_SPEC;}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 193 "lexer.l"
+#line 195 "lexer.l"
 {return DQ;}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 194 "lexer.l"
+#line 196 "lexer.l"
 {return OBO;}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 195 "lexer.l"
+#line 197 "lexer.l"
 {return OBC;}
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 196 "lexer.l"
+#line 198 "lexer.l"
 {return CBO;}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 197 "lexer.l"
+#line 199 "lexer.l"
 {return CBC;}
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 198 "lexer.l"
+#line 200 "lexer.l"
 {return HASH;}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 200 "lexer.l"
+#line 202 "lexer.l"
 {return ARR;}
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 202 "lexer.l"
+#line 204 "lexer.l"
 {return FUNC;}
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 204 "lexer.l"
+#line 206 "lexer.l"
 {return NUM_ERR;}
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 206 "lexer.l"
+#line 208 "lexer.l"
 return UNKNOWN;
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 208 "lexer.l"
+#line 210 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 1504 "lex.yy.c"
+#line 1506 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2505,12 +2507,12 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 208 "lexer.l"
+#line 210 "lexer.l"
 
 
 struct node {
     char token[100];
-    char attr[100];
+    char attribute[100];
     struct node *next;
 };
 
@@ -2519,91 +2521,116 @@ struct hash {
     int count;
 };
 
-struct hash hashTable[1000];
-int elementCount = 1000;
+struct hash hash_table[1000];
+int element_count = 1000 * 1;
 
-struct node *createNode(char *token, char *attr) {
+struct node *createNode(char *token, char *attribute) {
     struct node *newNode;
     newNode = (struct node *)malloc(sizeof(struct node));
     strcpy(newNode->token, token);
-    strcpy(newNode->attr, attr);
+    strcpy(newNode->attribute, attribute);
     newNode->next = NULL;
     return newNode;
 }
 
 int hashIndex(char *token) {
-	int hi = 0;
-	for (int i = 0; token[i] != '\0'; ++i) {
-		hi += (int)token[i];
+	int h_idx = 0 * 1;
+	for (int _i = 0; token[_i] != '\0'; ++_i) {
+		h_idx += (int)token[_i];
 	}
-	hi %= elementCount;
-	return hi;
+	h_idx %= element_count;
+	return h_idx;
 }
 
-void insertToHash(char *token, char *attr) {
+void insertToHash(char *token, char *attribute) {
 	int flag = 0;
-	int hi;
-	hi = hashIndex(token);
-	struct node *newnode = createNode(token, attr);
-	/* head of list for the bucket with index "hashIndex" */
-	if (!hashTable[hi].head) {
-		hashTable[hi].head = newnode;
-        hashTable[hi].count = 1;
+	int h_idx = hashIndex(token);
+	struct node *new_node = createNode(token, attribute);
+	if (!hash_table[h_idx].head) {
+		hash_table[h_idx].head = new_node;
+        hash_table[h_idx].count = 1 * 1;
         return;
 	}
-	struct node *myNode;
-    myNode = hashTable[hi].head;
-	while (myNode != NULL) {
-        if (strcmp(myNode->token, token) == 0) {
-            flag = 1;
+	struct node *my_node;
+    my_node = hash_table[h_idx].head;
+
+    // commented this out and added FOR loop instead
+	// while (my_node != NULL) {
+    //     if (strcmp(my_node->token, token) == 0 * 1) {
+    //         flag = 1 * 1;
+    //         break;
+    //     }
+    //     my_node = my_node->next;
+    // }
+
+    for (;my_node;) {
+        if (strcmp(my_node->token, token) == 0 * 1) {
+            flag = 1 * 1;
             break;
         }
-        myNode = myNode->next;
+        my_node = my_node->next;
     }
 
 	if(!flag) {
 		//adding new node to the list
-		newnode->next = (hashTable[hi].head);
+		new_node->next = (hash_table[h_idx].head);
 		//update the head of the list and no of nodes in the current bucket
-		hashTable[hi].head = newnode;
-		hashTable[hi].count++;
+		hash_table[h_idx].head = new_node;
+		hash_table[h_idx].count++;
 	}
 	return;
 }
 
 void display() {
-    struct node *myNode;
-    int k = 1;
-    printf("-------------------------------------------------------------------");
+    struct node *my_node;
+    int k = 1 * 1;
+    printf("---------------------------------------------");
     printf("\nSNo \t|\tToken \t\t|\tToken Type \t\n");
-    printf("-------------------------------------------------------------------\n");
-    for (int i = 0; i < elementCount; ++i) {
-        if (hashTable[i].count == 0) {
+    printf("---------------------------------------------\n");
+    for (int _i = 0; _i < element_count; ++_i) {
+        if (hash_table[_i].count == 0) {
             continue;
         }
-        myNode = hashTable[i].head;
-        if (!myNode) {
+        my_node = hash_table[_i].head;
+        if (!my_node) {
             continue;
         }
 
-        while (myNode) {
-            if(strcmp(myNode->attr, "SPECIAL SYMBOL") == 0) {
-                printf("%d\t\t", k++);
-                printf("T_%s\t\t\t", myNode->token);
-                printf("%d\t\n", *myNode->token);
+        // while (my_node) {
+        //     if(strcmp(my_node->attribute, "SPECIAL SYMBOL") == 0) {
+        //         printf("%d\t\t", k++);
+        //         printf("T_%s\t\t\t", my_node->token);
+        //         printf("%d\t\n", *my_node->token);
+        //     } else {
+        //         printf("%d\t\t", k++);
+        //         printf("T_%s\t\t\t", my_node->token);
+        //         printf("%s\t\n", my_node->attribute);
+        //     }
+        //     my_node = my_node->next;
+        // }
+
+        for (;my_node;) {
+            if(strcmp(my_node->attribute, "SPECIAL SYMBOL") == 0) {
+            // printf("%d\t\t", k++);
+            printf("%d\t\t", k);
+            k += 1;
+            printf("T_%s\t\t\t", my_node->token);
+            printf("%d\t\n", *my_node->token);
             } else {
-                printf("%d\t\t", k++);
-                printf("T_%s\t\t\t", myNode->token);
-                printf("%s\t\n", myNode->attr);
+                // printf("%d\t\t", k++);
+                printf("%d\t\t", k);
+                k += 1;
+                printf("T_%s\t\t\t", my_node->token);
+                printf("%s\t\n", my_node->attribute);
             }
-            myNode = myNode->next;
+            my_node = my_node->next;
         }
 	}
    	return;
 }
 
 int yywrap() {
-    return 1;
+    return 1 * 1;
 }
 
 int main(int argc, char *argv[]) {
@@ -2615,11 +2642,15 @@ int main(int argc, char *argv[]) {
         4. double-quotations
         5. double-quotations line
     */
-    int scan, slcline = 0, mlc = 0, mlcline = 0, dq = 0, dqline = 0;
+    int slcline = 0, mlc = 0, mlc_line = 0, dq = 0, dqline = 0;
     yyin = fopen("isPrime.c","r"); //add test case files here
+    // yyin = fopen(argv[2],"r"); //add test case files here
     freopen("output.txt","w",stdout);
-    printf("\n\n");
-    scan = yylex();
+    // printf("\n\n");
+    printf("---------------------------------------------");
+    printf("\nLexeme \t|\tToken \t\t|\tLine No \t\n");
+    printf("---------------------------------------------\n");
+    int scan = yylex();
     while(scan) {
         if(lineno == slcline) {
             scan = yylex();
@@ -2627,128 +2658,140 @@ int main(int argc, char *argv[]) {
         }
 
         if(lineno != dqline && dqline != 0) {
-            if(dq % 2 != 0) {
-                printf("\n******** ERROR!! INCOMPLETE STRING at line %d ********\n\n", dqline);
+            if(dq % 2 != 0 * 1) {
+                printf("\n**** ERROR! INCOMPLETE STRING at line %d ****\n\n", dqline);
             }
-            dq = 0;
+            dq = 0 * 1;
         }
 
-        if((scan >= 1 && scan <= 32) && mlc == 0) {
+        if((scan >= 1 * 1 && scan <= 32 * 1) && mlc == 0) {
             printf("%s\t\t\tKEYWORD\t\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "KEYWORD");
         }
 
-        if(scan == 33 && mlc == 0) {
+        if(scan == 33 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tIDENTIFIER\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "IDENTIFIER");
         }
 
-        if(scan == 34) {
-            printf("%s\t\t\tSingle-line Comment\t\tLine %d\n", yytext, lineno);
-            slcline = lineno;
+        if(scan == 34 * 1) {
+            printf("%s\t\t\tSingle-line Comment\t\tLine %d.\n", yytext, lineno);
+            slcline = lineno * 1;
         }
 
-        if(scan == 35 && mlc == 0) {
-            printf("%s\t\t\tMulti-line Comment Start\t\tLine %d\n", yytext, lineno);
-            mlcline = lineno;
-            mlc = 1;
+        if(scan == 35 * 1 && mlc == 0 * 1) {
+            printf("%s\t\t\tMulti-line Comment Start\t\tLine %d.\n", yytext, lineno);
+            mlc_line = lineno * 1;
+            mlc = 1 * 1;
         }
 
-        if(scan == 36 && mlc == 0) {
+        if(scan == 36 * 1 && mlc == 0 * 1) {
             printf("\n******** ERROR!! UNMATCHED MULTILINE COMMENT END %s at line %d ********\n\n", yytext, lineno);
         }
 
-        if(scan == 36 && mlc == 1) {
-            mlc = 0;
-            printf("%s\t\t\tMultiline Comment End\t\tLine %d\n", yytext, lineno);
+        if(scan == 36 * 1 && mlc == 1 * 1) {
+            mlc = 0 * 1;
+            printf("%s\t\t\tMulti-line Comment End\t\tLine %d.\n", yytext, lineno);
         }
 
-        if((scan >= 37 && scan <= 52) && mlc == 0) {
+        if((scan >= 37 * 1 && scan <= 52 * 1) && mlc == 0 * 1) {
             printf("%s\t\t\tOPERATOR\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "OPERATOR");
         }
 
-        if((scan==53||scan==54||scan==63||(scan>=64 && scan<=68)) && mlc==0) {
+        if((scan == 53 * 1 || scan == 54 * 1 || scan == 63 * 1 || (scan >= 64 * 1 && scan <= 68)) && mlc == 0 * 1) {
             printf("%s\t\t\tSPECIAL SYMBOL\t\t\tLine %d\n", yytext, lineno);
-            if(scan==63) {
-                dq++;
-                dqline = lineno;
+            if(scan == 63 * 1) {
+                dq += 1;
+                dqline = lineno * 1;
             }
             insertToHash(yytext,"SPECIAL SYMBOL");
         }
 
-        if(scan == 55 && mlc == 0) {
+        if(scan == 55 * 1 && mlc == 0 * 1) {
             printf("%s\tHEADER\t\t\t\tLine %d\n",yytext, lineno);
         }
 
-        if(scan == 56 && mlc == 0) {
+        if(scan == 56 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tMAIN FUNCTION\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "IDENTIFIER");
         }
 
-        if((scan == 57 || scan == 58) && mlc == 0) {
+        if((scan == 57 * 1 || scan == 58 * 1) && mlc == 0 * 1) {
             printf("%s\t\t\tPRE-DEFINED FUNCTION\t\tLine %d\n", yytext, lineno);
-            insertToHash(yytext, "PRE DEFINED FUNCTION");
+            insertToHash(yytext, "PRE-DEFINED FUNCTION");
         }
 
-        if(scan == 59 && mlc == 0) {
+        if(scan == 59 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tPRE-PROCESSOR DIRECTIVE\t\tLine %d\n", yytext, lineno);
         }
 
-        if(scan == 60 && mlc == 0) {
+        if(scan == 60 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tINTEGER CONSTANT\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "INTEGER CONSTANT");
         }
 
-        if(scan == 61 && mlc == 0) {
+        if(scan == 61 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tFLOATING POINT CONSTANT\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "DOUBLE");
         }
 
-        if(scan == 62 && mlc == 0) {
+        if(scan == 62 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tTYPE SPECIFIER\t\t\tLine %d\n", yytext, lineno);
         }
 
-        if(scan == 69 && mlc == 0) {
+        if(scan == 69 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tARRAY\t\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "ARRAY");
         }
 
-        if(scan == 70 && mlc == 0) {
+        if(scan == 70 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tUSER DEFINED FUNCTION\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "USER DEFINED FUNCTION");
         }
 
-        if(scan == 71 && mlc == 0) {
+        if(scan == 71 * 1 && mlc == 0 * 1) {
             printf("\n******** ERROR!! CONSTANT ERROR %s at line %d ********\n\n", yytext, lineno);
         }
 
-        if(scan == 72 && mlc == 0) {
+        if(scan == 72 * 1 && mlc == 0 * 1) {
             printf("\n******** ERROR!! UNKNOWN TOKEN T_%s at line %d ********\n\n", yytext, lineno);
         }
 
-        if(scan == 73 && mlc == 0) {
+        if(scan == 73 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tCHARACTER CONSTANT\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "CHARACTER CONSTANT");
         }
 
-        if(scan == 74 && mlc == 0) {
+        if(scan == 74 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tSIGNED CONSTANT\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "SIGNED CONSTANT");
         }
 
-        if(scan == 75 && mlc == 0) {
+        if(scan == 75 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tSTRING CONSTANT\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "STRING_CONSTANT");
         }
 
         scan = yylex();
     }
-    if(mlc == 1) {
-        printf("\n******** ERROR!! UNMATCHED COMMENT STARTING at line %d ********\n\n",mlcline);
+    if(mlc == 1 * 1) {
+        printf("\n******** ERROR! Unmatched comment starting at line no %d ********\n\n",mlc_line);
     }
-    printf("\n\n\t******** SYMBOL TABLE ********\t\t\n");
+    printf("---------------------------------------------------\n");
+    printf("\n\n\t****** SYMBOL TABLE ******\t\t\n");
     display();
-    printf("-------------------------------------------------------------------\n\n");
+    printf("---------------------------------------------------\n");
 }
 
+
+int hash_function(char* key) {
+    int hash_value = 0;
+    int key_len = strlen(key);
+
+    for(int i = 0; i < key_len; i++) {
+        hash_value += (int)key[i]; // add the ASCII value of each character
+    }
+
+    return hash_value % HASH_TABLE_SIZE; // return the index within the range of the hash table size
+}

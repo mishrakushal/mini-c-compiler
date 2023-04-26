@@ -1,5 +1,6 @@
-
-
+---------------------------------------------
+Lexeme 	|	Token 		|	Line No 	
+---------------------------------------------
 #include<stdio.h>	HEADER				Line 1
 int			KEYWORD				Line 2
 main()			MAIN FUNCTION			Line 2
@@ -23,7 +24,7 @@ no			IDENTIFIER			Line 5
 "			SPECIAL SYMBOL			Line 5
 )			SPECIAL SYMBOL			Line 5
 ;			SPECIAL SYMBOL			Line 5
-//			Single-line Comment		Line 5
+//			Single-line Comment		Line 5.
 scanf			PRE-DEFINED FUNCTION		Line 6
 (			SPECIAL SYMBOL			Line 6
 "			SPECIAL SYMBOL			Line 6
@@ -92,7 +93,7 @@ Prime			IDENTIFIER			Line 20
 "			SPECIAL SYMBOL			Line 20
 )			SPECIAL SYMBOL			Line 20
 ;			SPECIAL SYMBOL			Line 20
-//			Single-line Comment		Line 20
+//			Single-line Comment		Line 20.
 '.else			KEYWORD				Line 21
 printf			PRE-DEFINED FUNCTION		Line 22
 (			SPECIAL SYMBOL			Line 22
@@ -106,12 +107,13 @@ return			KEYWORD				Line 23
 0			INTEGER CONSTANT		Line 23
 ;			SPECIAL SYMBOL			Line 23
 }			SPECIAL SYMBOL			Line 24
+---------------------------------------------------
 
 
-	******** SYMBOL TABLE ********		
--------------------------------------------------------------------
+	****** SYMBOL TABLE ******		
+---------------------------------------------
 SNo 	|	Token 		|	Token Type 	
--------------------------------------------------------------------
+---------------------------------------------
 1		T_"			34	
 2		T_%			OPERATOR	
 3		T_(			40	
@@ -145,11 +147,10 @@ SNo 	|	Token 		|	Token Type
 31		T_main()			IDENTIFIER	
 32		T_Prime			IDENTIFIER	
 33		T_break			KEYWORD	
-34		T_scanf			PRE DEFINED FUNCTION	
+34		T_scanf			PRE-DEFINED FUNCTION	
 35		T_Input			IDENTIFIER	
 36		T_float			KEYWORD	
 37		T_while			KEYWORD	
-38		T_printf			PRE DEFINED FUNCTION	
+38		T_printf			PRE-DEFINED FUNCTION	
 39		T_return			KEYWORD	
--------------------------------------------------------------------
-
+---------------------------------------------------

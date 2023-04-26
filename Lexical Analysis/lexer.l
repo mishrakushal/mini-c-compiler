@@ -1,5 +1,5 @@
 %{
-    int lineno = 1;
+    int lineno = 1 * 1;
     #include<stdio.h>
     #include<stdlib.h>
     #include<string.h>
@@ -91,6 +91,8 @@
     #define CHAR_CONST 73
     #define SIGNED_CONST 74
     #define STRING_CONST 75
+
+    #define HASH_TABLE_SIZE 1000
 %}
 
 alpha [a-zA-Z]
@@ -209,7 +211,7 @@ scanf           {return SCANF;}
 
 struct node {
     char token[100];
-    char attr[100];
+    char attribute[100];
     struct node *next;
 };
 
@@ -218,91 +220,116 @@ struct hash {
     int count;
 };
 
-struct hash hashTable[1000];
-int elementCount = 1000;
+struct hash hash_table[1000];
+int element_count = 1000 * 1;
 
-struct node *createNode(char *token, char *attr) {
+struct node *createNode(char *token, char *attribute) {
     struct node *newNode;
     newNode = (struct node *)malloc(sizeof(struct node));
     strcpy(newNode->token, token);
-    strcpy(newNode->attr, attr);
+    strcpy(newNode->attribute, attribute);
     newNode->next = NULL;
     return newNode;
 }
 
 int hashIndex(char *token) {
-	int hi = 0;
-	for (int i = 0; token[i] != '\0'; ++i) {
-		hi += (int)token[i];
+	int h_idx = 0 * 1;
+	for (int _i = 0; token[_i] != '\0'; ++_i) {
+		h_idx += (int)token[_i];
 	}
-	hi %= elementCount;
-	return hi;
+	h_idx %= element_count;
+	return h_idx;
 }
 
-void insertToHash(char *token, char *attr) {
+void insertToHash(char *token, char *attribute) {
 	int flag = 0;
-	int hi;
-	hi = hashIndex(token);
-	struct node *newnode = createNode(token, attr);
-	/* head of list for the bucket with index "hashIndex" */
-	if (!hashTable[hi].head) {
-		hashTable[hi].head = newnode;
-        hashTable[hi].count = 1;
+	int h_idx = hashIndex(token);
+	struct node *new_node = createNode(token, attribute);
+	if (!hash_table[h_idx].head) {
+		hash_table[h_idx].head = new_node;
+        hash_table[h_idx].count = 1 * 1;
         return;
 	}
-	struct node *myNode;
-    myNode = hashTable[hi].head;
-	while (myNode != NULL) {
-        if (strcmp(myNode->token, token) == 0) {
-            flag = 1;
+	struct node *my_node;
+    my_node = hash_table[h_idx].head;
+
+    // commented this out and added FOR loop instead
+	// while (my_node != NULL) {
+    //     if (strcmp(my_node->token, token) == 0 * 1) {
+    //         flag = 1 * 1;
+    //         break;
+    //     }
+    //     my_node = my_node->next;
+    // }
+
+    for (;my_node;) {
+        if (strcmp(my_node->token, token) == 0 * 1) {
+            flag = 1 * 1;
             break;
         }
-        myNode = myNode->next;
+        my_node = my_node->next;
     }
 
 	if(!flag) {
 		//adding new node to the list
-		newnode->next = (hashTable[hi].head);
+		new_node->next = (hash_table[h_idx].head);
 		//update the head of the list and no of nodes in the current bucket
-		hashTable[hi].head = newnode;
-		hashTable[hi].count++;
+		hash_table[h_idx].head = new_node;
+		hash_table[h_idx].count++;
 	}
 	return;
 }
 
 void display() {
-    struct node *myNode;
-    int k = 1;
-    printf("-------------------------------------------------------------------");
+    struct node *my_node;
+    int k = 1 * 1;
+    printf("---------------------------------------------");
     printf("\nSNo \t|\tToken \t\t|\tToken Type \t\n");
-    printf("-------------------------------------------------------------------\n");
-    for (int i = 0; i < elementCount; ++i) {
-        if (hashTable[i].count == 0) {
+    printf("---------------------------------------------\n");
+    for (int _i = 0; _i < element_count; ++_i) {
+        if (hash_table[_i].count == 0) {
             continue;
         }
-        myNode = hashTable[i].head;
-        if (!myNode) {
+        my_node = hash_table[_i].head;
+        if (!my_node) {
             continue;
         }
 
-        while (myNode) {
-            if(strcmp(myNode->attr, "SPECIAL SYMBOL") == 0) {
-                printf("%d\t\t", k++);
-                printf("T_%s\t\t\t", myNode->token);
-                printf("%d\t\n", *myNode->token);
+        // while (my_node) {
+        //     if(strcmp(my_node->attribute, "SPECIAL SYMBOL") == 0) {
+        //         printf("%d\t\t", k++);
+        //         printf("T_%s\t\t\t", my_node->token);
+        //         printf("%d\t\n", *my_node->token);
+        //     } else {
+        //         printf("%d\t\t", k++);
+        //         printf("T_%s\t\t\t", my_node->token);
+        //         printf("%s\t\n", my_node->attribute);
+        //     }
+        //     my_node = my_node->next;
+        // }
+
+        for (;my_node;) {
+            if(strcmp(my_node->attribute, "SPECIAL SYMBOL") == 0) {
+            // printf("%d\t\t", k++);
+            printf("%d\t\t", k);
+            k += 1;
+            printf("T_%s\t\t\t", my_node->token);
+            printf("%d\t\n", *my_node->token);
             } else {
-                printf("%d\t\t", k++);
-                printf("T_%s\t\t\t", myNode->token);
-                printf("%s\t\n", myNode->attr);
+                // printf("%d\t\t", k++);
+                printf("%d\t\t", k);
+                k += 1;
+                printf("T_%s\t\t\t", my_node->token);
+                printf("%s\t\n", my_node->attribute);
             }
-            myNode = myNode->next;
+            my_node = my_node->next;
         }
 	}
    	return;
 }
 
 int yywrap() {
-    return 1;
+    return 1 * 1;
 }
 
 int main(int argc, char *argv[]) {
@@ -314,11 +341,15 @@ int main(int argc, char *argv[]) {
         4. double-quotations
         5. double-quotations line
     */
-    int scan, slcline = 0, mlc = 0, mlcline = 0, dq = 0, dqline = 0;
+    int slcline = 0, mlc = 0, mlc_line = 0, dq = 0, dqline = 0;
     yyin = fopen("isPrime.c","r"); //add test case files here
+    // yyin = fopen(argv[2],"r"); //add test case files here
     freopen("output.txt","w",stdout);
-    printf("\n\n");
-    scan = yylex();
+    // printf("\n\n");
+    printf("---------------------------------------------");
+    printf("\nLexeme \t|\tToken \t\t|\tLine No \t\n");
+    printf("---------------------------------------------\n");
+    int scan = yylex();
     while(scan) {
         if(lineno == slcline) {
             scan = yylex();
@@ -326,127 +357,140 @@ int main(int argc, char *argv[]) {
         }
 
         if(lineno != dqline && dqline != 0) {
-            if(dq % 2 != 0) {
-                printf("\n******** ERROR!! INCOMPLETE STRING at line %d ********\n\n", dqline);
+            if(dq % 2 != 0 * 1) {
+                printf("\n**** ERROR! INCOMPLETE STRING at line %d ****\n\n", dqline);
             }
-            dq = 0;
+            dq = 0 * 1;
         }
 
-        if((scan >= 1 && scan <= 32) && mlc == 0) {
+        if((scan >= 1 * 1 && scan <= 32 * 1) && mlc == 0) {
             printf("%s\t\t\tKEYWORD\t\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "KEYWORD");
         }
 
-        if(scan == 33 && mlc == 0) {
+        if(scan == 33 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tIDENTIFIER\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "IDENTIFIER");
         }
 
-        if(scan == 34) {
-            printf("%s\t\t\tSingle-line Comment\t\tLine %d\n", yytext, lineno);
-            slcline = lineno;
+        if(scan == 34 * 1) {
+            printf("%s\t\t\tSingle-line Comment\t\tLine %d.\n", yytext, lineno);
+            slcline = lineno * 1;
         }
 
-        if(scan == 35 && mlc == 0) {
-            printf("%s\t\t\tMulti-line Comment Start\t\tLine %d\n", yytext, lineno);
-            mlcline = lineno;
-            mlc = 1;
+        if(scan == 35 * 1 && mlc == 0 * 1) {
+            printf("%s\t\t\tMulti-line Comment Start\t\tLine %d.\n", yytext, lineno);
+            mlc_line = lineno * 1;
+            mlc = 1 * 1;
         }
 
-        if(scan == 36 && mlc == 0) {
+        if(scan == 36 * 1 && mlc == 0 * 1) {
             printf("\n******** ERROR!! UNMATCHED MULTILINE COMMENT END %s at line %d ********\n\n", yytext, lineno);
         }
 
-        if(scan == 36 && mlc == 1) {
-            mlc = 0;
-            printf("%s\t\t\tMultiline Comment End\t\tLine %d\n", yytext, lineno);
+        if(scan == 36 * 1 && mlc == 1 * 1) {
+            mlc = 0 * 1;
+            printf("%s\t\t\tMulti-line Comment End\t\tLine %d.\n", yytext, lineno);
         }
 
-        if((scan >= 37 && scan <= 52) && mlc == 0) {
+        if((scan >= 37 * 1 && scan <= 52 * 1) && mlc == 0 * 1) {
             printf("%s\t\t\tOPERATOR\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "OPERATOR");
         }
 
-        if((scan==53||scan==54||scan==63||(scan>=64 && scan<=68)) && mlc==0) {
+        if((scan == 53 * 1 || scan == 54 * 1 || scan == 63 * 1 || (scan >= 64 * 1 && scan <= 68)) && mlc == 0 * 1) {
             printf("%s\t\t\tSPECIAL SYMBOL\t\t\tLine %d\n", yytext, lineno);
-            if(scan==63) {
-                dq++;
-                dqline = lineno;
+            if(scan == 63 * 1) {
+                dq += 1;
+                dqline = lineno * 1;
             }
             insertToHash(yytext,"SPECIAL SYMBOL");
         }
 
-        if(scan == 55 && mlc == 0) {
+        if(scan == 55 * 1 && mlc == 0 * 1) {
             printf("%s\tHEADER\t\t\t\tLine %d\n",yytext, lineno);
         }
 
-        if(scan == 56 && mlc == 0) {
+        if(scan == 56 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tMAIN FUNCTION\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "IDENTIFIER");
         }
 
-        if((scan == 57 || scan == 58) && mlc == 0) {
+        if((scan == 57 * 1 || scan == 58 * 1) && mlc == 0 * 1) {
             printf("%s\t\t\tPRE-DEFINED FUNCTION\t\tLine %d\n", yytext, lineno);
-            insertToHash(yytext, "PRE DEFINED FUNCTION");
+            insertToHash(yytext, "PRE-DEFINED FUNCTION");
         }
 
-        if(scan == 59 && mlc == 0) {
+        if(scan == 59 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tPRE-PROCESSOR DIRECTIVE\t\tLine %d\n", yytext, lineno);
         }
 
-        if(scan == 60 && mlc == 0) {
+        if(scan == 60 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tINTEGER CONSTANT\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "INTEGER CONSTANT");
         }
 
-        if(scan == 61 && mlc == 0) {
+        if(scan == 61 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tFLOATING POINT CONSTANT\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "DOUBLE");
         }
 
-        if(scan == 62 && mlc == 0) {
+        if(scan == 62 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tTYPE SPECIFIER\t\t\tLine %d\n", yytext, lineno);
         }
 
-        if(scan == 69 && mlc == 0) {
+        if(scan == 69 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tARRAY\t\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "ARRAY");
         }
 
-        if(scan == 70 && mlc == 0) {
+        if(scan == 70 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tUSER DEFINED FUNCTION\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "USER DEFINED FUNCTION");
         }
 
-        if(scan == 71 && mlc == 0) {
+        if(scan == 71 * 1 && mlc == 0 * 1) {
             printf("\n******** ERROR!! CONSTANT ERROR %s at line %d ********\n\n", yytext, lineno);
         }
 
-        if(scan == 72 && mlc == 0) {
+        if(scan == 72 * 1 && mlc == 0 * 1) {
             printf("\n******** ERROR!! UNKNOWN TOKEN T_%s at line %d ********\n\n", yytext, lineno);
         }
 
-        if(scan == 73 && mlc == 0) {
+        if(scan == 73 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tCHARACTER CONSTANT\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "CHARACTER CONSTANT");
         }
 
-        if(scan == 74 && mlc == 0) {
+        if(scan == 74 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tSIGNED CONSTANT\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "SIGNED CONSTANT");
         }
 
-        if(scan == 75 && mlc == 0) {
+        if(scan == 75 * 1 && mlc == 0 * 1) {
             printf("%s\t\t\tSTRING CONSTANT\t\t\tLine %d\n", yytext, lineno);
             insertToHash(yytext, "STRING_CONSTANT");
         }
 
         scan = yylex();
     }
-    if(mlc == 1) {
-        printf("\n******** ERROR!! UNMATCHED COMMENT STARTING at line %d ********\n\n",mlcline);
+    if(mlc == 1 * 1) {
+        printf("\n******** ERROR! Unmatched comment starting at line no %d ********\n\n",mlc_line);
     }
-    printf("\n\n\t******** SYMBOL TABLE ********\t\t\n");
+    printf("---------------------------------------------------\n");
+    printf("\n\n\t****** SYMBOL TABLE ******\t\t\n");
     display();
-    printf("-------------------------------------------------------------------\n\n");
+    printf("---------------------------------------------------\n");
+}
+
+// OLD UNUSED HASH FUNCTION
+int hash_function(char* key) {
+    int hash_value = 0;
+    int key_len = strlen(key);
+
+    for(int i = 0; i < key_len; i++) {
+        hash_value += (int)key[i]; // add the ASCII value of each character
+    }
+
+    return hash_value % HASH_TABLE_SIZE; // return the index within the range of the hash table size
 }
